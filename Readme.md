@@ -1,4 +1,4 @@
-                                                # Password Reset Backend
+                                                Password Reset Backend
 
 ## Overview
 This project implements a secure password reset flow for the backend service.
