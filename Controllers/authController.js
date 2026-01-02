@@ -52,7 +52,7 @@ export const login = async (req, res) => {
   }
 };
 
-/* ================= FORGOT PASSWORD ================= */
+/* ================= FORGOT PASSWORD =============== */
 export const forgotPassword = async (req, res) => {
   try {
     const { email } = req.body;
