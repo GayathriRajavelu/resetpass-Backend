@@ -45,7 +45,7 @@ https://documenter.getpostman.com/view/50931750/2sBXVckCWk
 
 Render
 
-https://resetpass-backend.onrender.com
+https://resetpass-backend-3.onrender.com
 
 ## Security
 - Tokens expire after 1 hour
