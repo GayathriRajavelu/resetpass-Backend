@@ -8,8 +8,18 @@ dotenv.config();
 
 const app = express();
 
+// CORS 
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://resetpassflow.netlify.app",
+    ],
+    credentials: true,
+  })
+);
+
 // middleware
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -31,13 +41,3 @@ connectDB();
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://resetpassflow.netlify.app/"
-    ],
-    credentials: true,
-  })
-);
