@@ -8,36 +8,41 @@ dotenv.config();
 
 const app = express();
 
-// CORS 
+/* ✅ Allowed origins */
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://resetpassflow.netlify.app",
+];
+
+/* ✅ CORS middleware */
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://resetpassflow.netlify.app",
-    ],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
 
-// middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// test route
 app.get("/", (req, res) => {
   res.send("Backend is running");
 });
 
-// routes
 app.use("/api/auth", authRoutes);
 
-// port
 const PORT = process.env.PORT || 5000;
 
-// connect DB
 connectDB();
 
-// start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+export default app;
